@@ -1,0 +1,93 @@
+Open Watcom Linker Version 2.0 beta Jun 23 2023 02:32:11 (32-bit)
+Copyright (c) 2002-2023 The Open Watcom Contributors. All Rights Reserved.
+Portions Copyright (c) 1985-2002 Sybase, Inc. All Rights Reserved.
+Created on:       24/01/16 21:26:40
+Executable Image: /home/dean/osLearn/build/stage2.bin
+creating a RAW Binary Image executable
+
+
+                        +------------+
+                        |   Groups   |
+                        +------------+
+
+Group                           Address              Size
+=====                           =======              ====
+
+DGROUP                          0000066a             00000076
+
+
+
+                        +--------------+
+                        |   Segments   |
+                        +--------------+
+
+Segment                Class          Group          Address         Size
+=======                =====          =====          =======         ====
+
+_ENTRY                 CODE           AUTO           00000000        00000013
+_TEXT                  CODE           AUTO           00000013        00000656
+CONST                  DATA           DGROUP         0000066a        00000064
+CONST2                 DATA           DGROUP         000006ce        00000011
+_DATA                  DATA           DGROUP         000006e0        00000000
+
+
+                        +----------------+
+                        |   Memory Map   |
+                        +----------------+
+
+* = unreferenced symbol
++ = symbol only referenced locally
+
+Address        Symbol
+=======        ======
+
+Module: /home/dean/osLearn/build/stage2/asm/main.obj(main.asm)
+00000000       entry
+Module: /home/dean/osLearn/build/stage2/asm/x86.obj(x86.asm)
+00000013       _x86_div64_32
+00000041       _x86_VideoWriteChartTeletype
+00000068*      _x86_DiskRead
+0000009d*      _x86_DiskGetParmas
+Module: /home/dean/osLearn/build/stage2/c/main.obj(/home/dean/osLearn/src/bootloader/stage2/main.c)
+000000e1       _cstart_
+Module: /home/dean/osLearn/build/stage2/c/stdio.obj(/home/dean/osLearn/src/bootloader/stage2/stdio.c)
+0000013c+      putc_
+00000163+      puts_
+0000019a       _printf
+000003f6+      printfNum_
+000006ce+      _hex
+
+
+                        +---------------------+
+                        |   Module Segments   |
+                        +---------------------+
+
+! = 32-bit segment
+c = initialized communal data
+
+Module          Segment               Class           Address         Size
+======          =======               =====           =======         ====
+
+main.asm        _ENTRY                CODE           00000000         00000013
+x86.asm         _TEXT                 CODE           00000013         000000ce
+/home/dean/osLearn/src/bootloader/stage2/main.c
+                _TEXT                 CODE           000000e1         0000005b
+                CONST                 DATA           0000066a         00000064
+                CONST2                DATA           000006ce         00000000
+                _DATA                 DATA           000006e0         00000000
+/home/dean/osLearn/src/bootloader/stage2/stdio.c
+                _TEXT                 CODE           0000013c         0000052d
+                CONST                 DATA           000006ce         00000000
+                CONST2                DATA           000006ce         00000011
+                _DATA                 DATA           000006e0         00000000
+Warning! W1014: stack segment not found
+
+
+                        +-----------------------+
+                        |   Linker Statistics   |
+                        +-----------------------+
+
+Stack size:  0200 (512.)
+Memory size:  06e0 (1760.)
+Entry point address: 00000000
+Link time: 00:00.00
